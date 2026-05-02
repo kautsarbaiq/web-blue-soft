@@ -7,7 +7,7 @@ function Layout({ children }) {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
       let current = 'home';
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -27,36 +27,37 @@ function Layout({ children }) {
 
   const getNavClass = (sectionId) => {
     const baseClass = "transition-all duration-300 px-3 py-1 cursor-pointer ";
-    return activeSection === sectionId 
-      ? baseClass + "text-cyan-400 border-b-2 border-cyan-400 pb-1"
-      : baseClass + "text-slate-400 hover:text-white hover:bg-white/10 rounded-md";
+    return activeSection === sectionId
+      ? baseClass + "text-cyan-400"
+      : baseClass + "text-slate-400 hover:text-white";
   };
 
   return (
     <>
       <div className="noise-bg"></div>
-      
+
       {/* Top Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-12 mt-6 w-full pointer-events-none">
-        {/* Logo Island */}
-        <div className="px-6 py-2 pointer-events-auto">
-          <a href="#home" className="text-2xl font-black tracking-tighter text-cyan-400">Blue Soft</a>
-        </div>
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-12 mt-6">
+        <div className="max-w-7xl mx-auto backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl flex justify-between items-center px-8 py-4 shadow-[0_10px_30px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)]">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <a href="#home" className="text-2xl font-black tracking-tighter text-cyan-400">Blue Soft</a>
+          </div>
 
-        {/* Navigation Island */}
-        <nav className="hidden md:flex gap-2 items-center px-4 py-2 bg-white/10 backdrop-blur-2xl saturate-150 rounded-full border border-white/20 border-t-white/40 shadow-[0_0_30px_rgba(0,212,255,0.15)] pointer-events-auto">
-          <a href="#home" className={getNavClass('home')}>Home</a>
-          <a href="#about" className={getNavClass('about')}>About</a>
-          <a href="#services" className={getNavClass('services')}>Services</a>
-          <a href="#portfolio" className={getNavClass('portfolio')}>Portfolio</a>
-          <a href="#contact" className={getNavClass('contact')}>Contact</a>
-        </nav>
+          {/* Navigation & CTA Group */}
+          <div className="flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-6">
+              <a href="#home" className={getNavClass('home')}>Home</a>
+              <a href="#about" className={getNavClass('about')}>About</a>
+              <a href="#services" className={getNavClass('services')}>Services</a>
+              <a href="#portfolio" className={getNavClass('portfolio')}>Portfolio</a>
+              <a href="#contact" className={getNavClass('contact')}>Contact</a>
+            </nav>
 
-        {/* CTA Island */}
-        <div className="px-4 py-2 pointer-events-auto">
-          <a href="#contact" className="bg-primary-container text-on-primary-container hover:text-cyan-400 hover:bg-[#001f27] font-sans text-sm font-medium tracking-wide px-6 py-2 rounded-full transition-all duration-300 inline-block scale-95 active:scale-90 border border-primary-container shadow-[0_0_15px_rgba(0,212,255,0.3)]">
-            Get Started
-          </a>
+            <a href="#contact" className="bg-primary-container text-on-primary-container hover:text-cyan-400 hover:bg-[#001f27] font-sans text-sm font-medium tracking-wide px-6 py-2 rounded-xl transition-all duration-300 inline-block border border-primary-container shadow-[0_5px_15px_rgba(0,212,255,0.2)] whitespace-nowrap">
+              Get Started
+            </a>
+          </div>
         </div>
       </header>
 
