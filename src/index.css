@@ -69,3 +69,8 @@
     /* Firefox */
   }
 }
+@layer utilities {
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}

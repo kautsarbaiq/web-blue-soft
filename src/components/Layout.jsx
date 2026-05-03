@@ -41,28 +41,25 @@ function Layout({ children }) {
       {/* Top Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 px-4 md:px-12 mt-6 flex justify-center pointer-events-none">
         <div 
-          className={`backdrop-blur-2xl bg-white/10 border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-auto ${
+          className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center pointer-events-auto ${
             isScrolled 
-              ? 'max-w-[480px] px-6 py-2 rounded-full justify-center' 
-              : 'max-w-7xl w-full px-8 py-4 rounded-2xl'
+              ? 'backdrop-blur-2xl bg-white/10 border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] max-w-[480px] px-6 py-2 rounded-full justify-center' 
+              : 'bg-transparent border-none shadow-none max-w-7xl w-full px-8 py-4 justify-between'
           }`}
         >
-          {/* Logo Container - Collapses Width */}
+          {/* Logo Container - Left Aligned */}
           <div 
             className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center overflow-hidden whitespace-nowrap ${
-              isScrolled ? 'max-w-0 opacity-0' : 'max-w-[200px] opacity-100'
+              isScrolled ? 'max-w-0 opacity-0' : 'flex-1 opacity-100 -ml-4 md:-ml-8 lg:-ml-12'
             }`}
           >
-            <a href="#home" className="text-2xl font-black tracking-tighter text-cyan-400 mr-8">Blue Soft</a>
+            <a href="#home" className="text-xl font-black tracking-tighter text-black bg-cyan-400 px-1 py-1 rounded-none">Blue Soft</a>
           </div>
 
-          {/* Spacer to push Nav to the right when large */}
-          <div className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${isScrolled ? 'flex-grow-0 w-0' : 'flex-grow'}`}></div>
-
-          {/* Navigation Group */}
+          {/* Navigation Group - Centered when unscrolled */}
           <nav 
             className={`flex items-center transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-              isScrolled ? 'gap-2' : 'gap-8'
+              isScrolled ? 'gap-2 justify-center' : 'gap-8 flex-1 justify-center'
             }`}
           >
             <a href="#home" className={getNavClass('home')}>Home</a>
@@ -72,13 +69,13 @@ function Layout({ children }) {
             <a href="#contact" className={getNavClass('contact')}>Contact</a>
           </nav>
 
-          {/* CTA Container - Collapses Width */}
+          {/* CTA Container - Right Aligned */}
           <div 
-            className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden whitespace-nowrap ${
-              isScrolled ? 'max-w-0 opacity-0 ml-0' : 'max-w-[200px] opacity-100 ml-12'
+            className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden whitespace-nowrap flex justify-end ${
+              isScrolled ? 'max-w-0 opacity-0' : 'flex-1 opacity-100 -mr-4 md:-mr-8 lg:-mr-12'
             }`}
           >
-            <a href="#contact" className="bg-primary-container text-on-primary-container hover:text-cyan-400 hover:bg-[#001f27] font-sans text-sm font-medium tracking-wide px-6 py-2 rounded-xl transition-all duration-300 inline-block border border-primary-container shadow-[0_5px_15px_rgba(0,212,255,0.2)]">
+            <a href="#contact" className="bg-primary-container text-on-primary-container hover:text-cyan-400 hover:bg-[#001f27] font-sans text-sm font-medium tracking-wide px-6 py-2 rounded-tl-xl rounded-tr-none rounded-br-xl rounded-bl-none transition-all duration-300 inline-block border border-primary-container shadow-[0_5px_15px_rgba(0,212,255,0.2)]">
               Get Started
             </a>
           </div>
