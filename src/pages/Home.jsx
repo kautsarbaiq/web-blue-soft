@@ -63,21 +63,31 @@ function Home() {
 
         {/* Massive Typography Hero Content */}
         <div className="text-white text-center z-10 w-full relative flex flex-col justify-center items-end -mt-20 pr-6 md:pr-10">
-          <h1 className="text-[4.5rem] sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] leading-[0.85] tracking-[-0.1em] font-normal uppercase m-0 p-0 text-white break-words text-left inline-block relative">
-            <span className="block -ml-[1.5rem] md:-ml-[5rem] lg:-ml-[8rem]">
-              {line1}
-              <span className={line1.length < fullLine1.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
-            </span>
-            <span className="block pl-4 md:pl-8 lg:pl-12">
-              {line2}
-              <span className={line1.length === fullLine1.length && line2.length < fullLine2.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
-            </span>
-            <span className="block text-right">
-              {line3}
-              <span className={line2.length === fullLine2.length && line3.length < fullLine3.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
-            </span>
+          <div className="relative inline-block text-left">
+            {/* Ghost text to maintain stable container size */}
+            <h1 className="invisible text-[4.5rem] sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] leading-[0.85] tracking-[-0.1em] font-normal uppercase m-0 p-0 break-words pointer-events-none">
+              <span className="block -ml-[1.5rem] md:-ml-[5rem] lg:-ml-[8rem]">BUILD</span>
+              <span className="block pl-4 md:pl-8 lg:pl-12">THE DIGITAL</span>
+              <span className="block text-right">FUTURE</span>
+            </h1>
+
+            {/* Actual animated text layer */}
+            <h1 className="absolute top-0 left-0 w-full h-full text-[4.5rem] sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] leading-[0.85] tracking-[-0.1em] font-normal uppercase m-0 p-0 text-white break-words">
+              <span className="block -ml-[1.5rem] md:-ml-[5rem] lg:-ml-[8rem]">
+                {line1}
+                <span className={line1.length < fullLine1.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
+              </span>
+              <span className="block pl-4 md:pl-8 lg:pl-12">
+                {line2}
+                <span className={line1.length === fullLine1.length && line2.length < fullLine2.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
+              </span>
+              <span className="block text-right">
+                {line3}
+                <span className={line2.length === fullLine2.length && line3.length < fullLine3.length ? "animate-pulse border-r-4 border-white ml-1" : ""}></span>
+              </span>
+            </h1>
             
-            {/* Description Text Box positioned relative to the heading */}
+            {/* Description Text Box - Now anchored to a stable container size */}
             <div className="absolute bottom-0 left-0 transform -translate-x-[60%] md:-translate-x-[120%] -translate-y-[20%] text-left max-w-[200px] md:max-w-[300px]">
               <p className="text-white text-[10px] md:text-sm leading-relaxed font-normal opacity-90 tracking-normal normal-case">
                 Blue Soft is the technology<br/>
@@ -87,7 +97,7 @@ function Home() {
                 the power of software.
               </p>
             </div>
-          </h1>
+          </div>
         </div>
 
         {/* Scroll Indicator */}

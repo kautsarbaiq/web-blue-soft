@@ -6,10 +6,7 @@ function About() {
       {/* Background Elements */}
       <div className="bg-glow-new"></div>
       <div className="bottom-glow-new"></div>
-      <div className="absolute top-24 left-4 text-gray-500 text-sm tracking-wide z-20">wow-marafon</div>
-      <div className="absolute top-24 right-4 text-gray-500 text-sm tracking-wide z-20">figma</div>
-      <div className="absolute bottom-4 left-4 text-gray-400 text-sm tracking-wide z-20">day 2</div>
-      <div className="absolute bottom-4 right-4 text-gray-400 text-sm tracking-wide z-20">anna kravchenko</div>
+
 
       {/* Main Content Area */}
       <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center mt-20">
