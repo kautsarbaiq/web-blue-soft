@@ -82,7 +82,8 @@ export default {
           "h1": ["Inter"],
           "h2": ["Inter"],
           "body-md": ["Inter"],
-          "h3": ["Inter"]
+          "h3": ["Inter"],
+          "orbitron": ["Orbitron", "sans-serif"]
       },
       "fontSize": {
           "h4": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700" }],

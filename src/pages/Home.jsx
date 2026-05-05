@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import MetalLiquid from '../components/MetalLiquid';
+import LightLiquidBackground from '../components/LightLiquidBackground';
+import SplineScene from '../components/SplineScene';
 
-function Home() {
+function Home({ theme }) {
   const [line1, setLine1] = useState('');
   const [line2, setLine2] = useState('');
   const [line3, setLine3] = useState('');
@@ -56,13 +58,30 @@ function Home() {
       <section id="home" className="relative flex items-center justify-end pt-[100px] pb-3xl overflow-hidden min-h-screen">
         {/* Metal Liquid WebGL Background */}
         <div aria-hidden="true" className="absolute inset-0 z-0">
-          <MetalLiquid />
+          <div className="absolute inset-0">
+            {theme === 'dark' ? <MetalLiquid /> : <LightLiquidBackground />}
+          </div>
           {/* Overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/40 via-transparent to-[#0a0a0f] z-[1]"></div>
+          <div className={`absolute inset-0 z-[1] hero-overlay ${
+            theme === 'dark' 
+              ? 'bg-gradient-to-b from-[#0a0a0f]/40 via-transparent to-[#0a0a0f]' 
+              : 'bg-transparent'
+          }`}></div>
+        </div>
+
+        {/* 3D Spline Asset Layer */}
+        <div className="absolute inset-0 z-[5] pointer-events-auto">
+          <SplineScene 
+            scene="https://prod.spline.design/dZtpoNz-ZoSka1OE/scene.splinecode" 
+            style={{ 
+              transform: 'scale(1.5) translateY(12%)',
+              transformOrigin: 'center center'
+            }}
+          />
         </div>
 
         {/* Massive Typography Hero Content */}
-        <div className="text-white text-center z-10 w-full relative flex flex-col justify-center items-end -mt-20 pr-6 md:pr-10">
+        <div className="text-white text-center z-10 w-full relative flex flex-col justify-center items-end -mt-20 pr-6 md:pr-10 pointer-events-none">
           <div className="relative inline-block text-left">
             {/* Ghost text to maintain stable container size */}
             <h1 className="invisible text-[4.5rem] sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] leading-[0.85] tracking-[-0.1em] font-normal uppercase m-0 p-0 break-words pointer-events-none">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Layout({ children }) {
+function Layout({ children, theme, toggleTheme }) {
   const [activeSection, setActiveSection] = useState('home');
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -67,6 +67,51 @@ function Layout({ children }) {
             <a href="#services" className={getNavClass('services')}>Services</a>
             <a href="#portfolio" className={getNavClass('portfolio')}>Portfolio</a>
             <a href="#contact" className={getNavClass('contact')}>Contact</a>
+            
+            {/* Premium Theme Switch Button */}
+            <button 
+              onClick={toggleTheme}
+              className="ml-4 relative group"
+              aria-label="Toggle Theme"
+            >
+              <div className="relative w-14 h-7 rounded-full backdrop-blur-xl bg-white/5 border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.1),0_4px_15px_rgba(0,0,0,0.2)] transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20 flex items-center px-1">
+                {/* Sliding Thumb */}
+                <div 
+                  className={`absolute w-5 h-5 rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.3)] transform transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-center ${
+                    theme === 'dark' 
+                      ? 'translate-x-7 bg-gradient-to-tr from-cyan-600 to-cyan-400' 
+                      : 'translate-x-0 bg-gradient-to-tr from-orange-500 to-yellow-400'
+                  }`}
+                >
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    {/* Moon Icon */}
+                    <svg 
+                      className={`absolute w-3 h-3 text-black transition-all duration-500 ${
+                        theme === 'dark' ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 -rotate-45'
+                      }`} 
+                      fill="currentColor" viewBox="0 0 20 20"
+                    >
+                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    {/* Sun Icon */}
+                    <svg 
+                      className={`absolute w-3 h-3 text-white transition-all duration-500 ${
+                        theme === 'light' ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-50 rotate-45'
+                      }`} 
+                      fill="currentColor" viewBox="0 0 20 20"
+                    >
+                      <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+                    </svg>
+                  </div>
+                </div>
+                
+                {/* Static Background Icons for visual hint */}
+                <div className="flex justify-between w-full px-1 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
+                  <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                  <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                </div>
+              </div>
+            </button>
           </nav>
 
           {/* CTA Container - Right Aligned */}
