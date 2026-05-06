@@ -196,7 +196,7 @@
 }
 
 :root.light-mode canvas {
-  opacity: 0.9;
+  opacity: 1;
   filter: saturate(1.1) brightness(1.05);
 }
 
