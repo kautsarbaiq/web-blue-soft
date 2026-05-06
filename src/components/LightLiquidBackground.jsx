@@ -38,30 +38,39 @@ const LightLiquidBackground = () => {
           p += 0.1 * vec2(sin(p.y * 2.0), cos(p.x * 2.0));
         }
 
-        // Balanced Multi-color Blue Palette
-        vec3 col1 = vec3(0.05, 0.1, 0.4);      // Deep Royal Blue
-        vec3 col2 = vec3(0.0, 0.4, 0.8);      // Ocean Blue
-        vec3 col3 = vec3(0.5, 0.4, 0.9);      // Soft Lavender (Accent)
-        vec3 col4 = vec3(0.2, 0.8, 0.9);      // Soft Teal (Accent)
-        vec3 col5 = vec3(1.0, 1.0, 1.0);      // Highlight White
-
-        // Abstract pattern mapping with organic fluid interference
-        float noise = sin(p.x * 2.0 + t * 0.2) * cos(p.y * 2.0 - t * 0.3);
-        float f1 = sin(p.x * 1.5 + p.y * 1.0 + noise + t * 0.5);
-        float f2 = cos(length(p) * 0.6 - noise - t * 0.2);
-        float f3 = sin(p.x * 3.0 - p.y * 2.0 + t);
+        // Rich Grayscale Metallic Palette
+        vec3 col1 = vec3(1.0, 1.0, 1.0);      // High-Gloss White
+        vec3 col2 = vec3(0.8, 0.8, 0.82);     // Polished Silver
+        vec3 col3 = vec3(0.5, 0.5, 0.53);     // Brushed Steel
+        vec3 col4 = vec3(0.2, 0.2, 0.22);     // Dark Chrome
+        vec3 col5 = vec3(0.05, 0.05, 0.07);   // Deep Onyx (Contrast)
         
-        // Organic Fluid Blending
+        // Subtle Holographic Hint
+        vec3 holo = vec3(0.8, 0.9, 1.0) * 0.5 + vec3(1.0, 0.8, 0.9) * 0.5;
+
+        // Abstract pattern mapping with higher complexity for "more gradients"
+        float noise = sin(p.x * 2.0 + t * 0.2) * cos(p.y * 2.5 - t * 0.3);
+        float f1 = sin(p.x * 1.8 + p.y * 1.2 + noise + t * 0.5);
+        float f2 = cos(length(p) * 0.8 - noise - t * 0.2);
+        float f3 = sin(p.x * 4.0 - p.y * 3.0 + t * 1.2);
+        float f4 = cos(p.x * 2.5 + p.y * 4.0 - t * 0.8);
+        
+        // Multi-layered Metallic Blending
         vec3 color = mix(col1, col2, 0.5 + 0.5 * f1);
-        color = mix(color, col3, 0.3 * (0.5 + 0.5 * f2)); // Subtle Lavender
-        color = mix(color, col4, 0.2 * (0.5 + 0.5 * f3)); // Subtle Teal
+        color = mix(color, col3, 0.4 * (0.5 + 0.5 * f2));
+        color = mix(color, col4, 0.3 * (0.5 + 0.5 * f3));
+        color = mix(color, col5, 0.25 * (0.5 + 0.5 * f4));
         
-        // Add pearlescent highlights
-        float highlights = pow(0.5 + 0.5 * sin(p.x * 4.0 - p.y * 3.0 + t), 15.0);
-        color = mix(color, col5, highlights * 0.4);
+        // Tiny hint of holographic pearl
+        float holoFactor = pow(0.5 + 0.5 * sin(p.x * 5.0 + p.y * 3.0 + t), 10.0);
+        color = mix(color, holo, holoFactor * 0.08);
+        
+        // Sharp Specular highlights
+        float highlights = pow(0.5 + 0.5 * sin(p.x * 6.0 - p.y * 5.0 + t * 2.0), 30.0);
+        color += vec3(1.0) * highlights * 0.8;
 
-        // Bold Contrast
-        color = pow(color, vec3(1.05)); 
+        // Punchy Contrast
+        color = pow(color, vec3(1.15)); 
         
         gl_FragColor = vec4(color, 1.0);
       }
